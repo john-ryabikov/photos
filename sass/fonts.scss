@@ -1,0 +1,38 @@
+@font-face {
+	font-family: "Noah Regular";
+	src: url(../fonts/Noah/Noah-Regular.ttf);
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Noah Thin";
+	src: url(../fonts/Noah/Noah-UltraLight.ttf);
+	font-weight: normal;
+}
+@font-face {
+    font-family: "Noah Bold";
+    src: url("../fonts/Noah/Noah-ExtraBold.woff2") format("woff2"),
+         url("../fonts/Noah/Noah-ExtraBold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: "Noah Light";
+	src: url(../fonts/Noah/Noah-Light.ttf);
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Noah Medium";
+	src: url(../fonts/Noah/Noah-Medium.ttf);
+	font-weight: normal;
+}
+@font-face {
+    font-family: 'ZenAntique-Regular';
+    src: url('ZenAntique-Regular.eot');
+    src: url('ZenAntique-Regular.eot?#iefix') format('embedded-opentype'),
+         url('ZenAntique-Regular.svg#ZenAntique-Regular') format('svg'),
+         url('ZenAntique-Regular.ttf') format('truetype'),
+         url('ZenAntique-Regular.woff') format('woff'),
+         url('ZenAntique-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }

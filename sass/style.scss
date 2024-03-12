@@ -1,0 +1,1176 @@
+@charset "UTF-8";
+//Основные настройки страницы (обнуление)
+html {overflow-x: hidden;}
+body {margin: 0;padding: 0;overflow-x: hidden;background: #FBFBFB;}
+* {box-sizing: border-box;}
+a {text-decoration: none;}
+p {user-select: none;}
+input::placeholder {font-family: "Noah Thin";color: rgba(122, 122, 122, 0.6);}
+textarea::placeholder {font-family: "Noah Thin";color: rgba(122, 122, 122, 0.6);}
+h1,h2,h3,h4,h5,h6 {font-weight: inherit; font-size: inherit;}
+
+//Миксины
+@mixin flexbox {display: -webkit-flex;display: -ms-flexbox;display: -moz-box;display: -webkit-box;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+@mixin flexbox-main {position: relative;display: -webkit-flex;display: -ms-flexbox;display: -moz-box;display: -webkit-box;display: flex;flex-direction: column;align-items: center;justify-content: center;width: 100%;height: 100vh;}
+@mixin border {border: 1px solid red;}
+
+//Подключение шрифтов
+@import "fonts.scss";
+
+//Стандартные размеры для контейнеров и блоков
+$contw: 1100px;
+
+//Стандартные настройки главного экрана и контейнера
+main {
+    @include flexbox();
+    justify-content: flex-start;
+    width: 100%;
+}
+section {
+    position: relative;
+    @include flexbox();
+    padding-top: 70px;
+    padding-bottom: 70px;
+    width: 100%;
+    height: auto;
+}
+.container {
+    position: relative;
+    display: flex;
+    width: $contw;
+    height: auto;
+}
+#works, #feedback, #price, #contacts {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#works {
+    top: -30px;
+}
+#price {
+    top: -100px;
+}
+
+//ГЛАВНЫЙ ЭКРАН---------------------------------------------------------------------------------------------------------------------------------
+.main-block {
+    position: relative;
+    @include flexbox-main();
+    .container {
+        align-items: center;
+        justify-content: center;
+    }
+}
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+    width: 100%;
+    height: 100px;
+    .header__icon {
+        position: relative;
+        font-family: 'ZenAntique-Regular';
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-self: center;
+        border-radius: 10px;
+        background-color: #323232;
+        color: #FFFFFF;
+        line-height: 44px;
+        width: 42px;
+        height: 42px;
+        user-select: none;
+        margin: 0;
+        font-size: 28px;
+        text-decoration: none;
+    }
+    .header__menu {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 540px;
+        height: 38px;
+        .menu__button {
+            font-family: "Noah Medium";
+            position: relative;
+            height: 100%;
+            font-size: 18px;
+            color: #000000;
+            line-height: 32px;
+            padding-right: 20px;
+            padding-left: 20px;
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: #000000;
+                transition: all 0.4s;
+            }
+            &:hover::before {
+                width: 100%;
+                right: 0;
+            }
+        }
+    }
+    .header__menu-btn {
+        position: relative;
+        display: none;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        line-height: 52px;
+        text-align: center;
+        border-radius: 25px;
+        i {
+            font-size: 20px;
+        }
+    }
+    .mobile-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+        width: 100%;
+        height: 100vh;
+        background-color: #fff;
+        transition: 0.5s;
+        transform: translateX(100%);
+        z-index: 9999;
+        &__close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            line-height: 46px;
+            text-align: center;
+            z-index: 5;
+            i {
+                font-size: 30px;
+            }
+        }
+        &__list {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 60%;
+            padding-top: 100px;
+            margin: 0 auto;
+            .menu__button-mob {
+                font-family: "Noah Medium";
+                position: relative;
+                height: 60px;
+                font-size: 28px;
+                color: #000000;
+                line-height: 32px;
+                padding-right: 20px;
+                padding-left: 20px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background-color: #000000;
+                    transition: all 0.4s;
+                }
+                &:hover::before {
+                    width: 100%;
+                    right: 0;
+                }
+            }
+
+        }
+    }
+}
+.container__infoblock {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1080px;
+    height: 445px;
+    border: 10px solid #323232;
+    .infoblock__space {
+        position: absolute;
+        width: 100px;
+        height: 260px;
+        top: 90px;
+        left: -80px;
+        background-color: #FBFBFB;
+    }
+    .infoblock__text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 560px;
+        height: 100%;
+        user-select: none;
+        h1 {
+            font-family: "Noah Bold";
+            font-size: 18px;
+            margin: 0;
+            letter-spacing: 0.3em;
+            color: #000000;
+            text-transform: uppercase;
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .text__author {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            .author__name {
+                font-family: "Noah Medium";
+                font-size: 96px;
+                margin: 0;
+                margin-right: 420px;
+            }
+            .author__secondname {
+                font-family: "Noah Medium";
+                font-size: 96px;
+                margin: 0;
+                margin-right: 110px;
+                margin-top: -5px;
+            }
+        }
+        .text__buttons {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            width: 90%;
+            margin-top: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+            .buttons__but {
+                font-family: "Noah Medium";
+                position: relative;
+                width: 220px;
+                height: 60px;
+                line-height: 60px;
+                color: #000000;
+                cursor: pointer;
+                user-select: none;
+                text-align: center;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                font-size: 12px;
+                transition: all 0.4s;
+                background-color: #e0e0e0;
+                border-radius: 3px;
+                &:hover {
+                    transform: scale(0.95, 0.95);
+                    background-color: #000000;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .infoblock__img {
+        position: relative;
+        display: block;
+        width: 370px;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12);
+        }
+    .infoblock__social {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 110px;
+        height: 100%;
+        margin-top: -40px;
+        .social__button {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            margin-top: 40px;
+            color: #828282;
+            line-height: 32px;
+            font-size: 22px;
+            text-align: center;
+            user-select: none;
+            transition: all 0.4s;
+            &:hover {
+                transform: scale(1.08, 1.08);
+                color: #000000;
+            }
+        }
+    }
+}
+@keyframes main__arrow {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    100% {
+      -webkit-transform: translateY(20px);
+              transform: translateY(20px);
+    }
+  }
+@keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    100% {
+      -webkit-transform: translateY(20px);
+              transform: translateY(20px);
+    }
+  }
+.main__arrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    display: block;
+    width: 40px;
+    -webkit-animation: slide-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+    animation: slide-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;  
+}
+
+//ВТОРОЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block2 {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(94.31deg, #414141 0.17%, #000000 100%);
+    .block2__text {
+        position: relative;
+        font-family: "Noah Regular";
+        font-size: 24px;
+        color: #C5C5C5;
+        text-align: center;
+        width: 100%;
+        height: 270px;
+        line-height: 34px;
+        p {
+            margin: 0;
+        }
+    }
+}
+
+//ТРЕТИЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block3 {
+    position: relative;
+    width: 100%;
+    padding-top: 140px;
+    padding-bottom: 140px;
+}
+.block3__prem {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.prem__column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    width: 320px;
+    height: 195px;
+    border: 3px solid #000000;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.column__space-1, .column__space-2, .column__space-3 {
+    position: absolute;
+    top: -4px;
+    left: -1px;
+    width: 120px;
+    height: 45px;
+    background-color: #FBFBFB;
+}
+.column__space-2 {
+    left: 0;
+}
+.column__icon {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+}
+.column__h {
+    position: relative;
+    margin: 0;
+    font-family: "Noah Bold";
+    font-size: 24px;
+}
+.column__text {
+    position: relative;
+    margin: 0;
+    margin-top: 17px;
+    font-family: "Noah Light";
+    font-size: 16px;
+    line-height: 20px;
+    width: 280px;
+    color: #5C5C5C;
+    user-select: none;
+}
+
+//ЧЕТВЕРТЫЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block4 {
+    position: relative;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 120px;
+}
+.block4__gallery {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    h2 {
+        font-family: "Noah Medium";
+        font-size: 60px;
+        margin: 0;
+        color: #000000;
+        text-transform: uppercase;
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        user-select: none;
+        }
+    .gallery__tabs {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 380px;
+        height: 32px;
+        user-select: none;
+        margin-top: 18px;
+        .tabs__button {
+            font-family: "Noah Medium";
+            position: relative;
+            font-size: 16px;
+            text-align: center;
+            color: #000;
+            cursor: pointer;
+            width: 110px;
+            height: 30px;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background-color: #000000;
+                transition: all 0.4s;
+            }
+            &:hover::before {
+                width: 100%;
+                right: 0;
+            }
+        }
+        .swiper-slide.swiper-slide-thumb-active {
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: #000000;
+            }
+        }
+    }
+    .gallery__photos {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+        .photos__slide {
+            position: relative;
+            display: flex;
+            flex-direction: row !important;
+            padding-top: 5px;
+        }
+        .photos__column {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 354px;
+            height: auto;
+            margin-left: 5px;
+            margin-right: 5px;
+            img {
+                display: block;
+                margin: 0;
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .block4__buttons {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 480px;
+        margin-top: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .button-4 {
+            font-family: "Noah Medium";
+            position: relative;
+            width: 220px;
+            height: 60px;
+            line-height: 60px;
+            color: #000000;
+            cursor: pointer;
+            user-select: none;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.4s;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            &:hover {
+                transform: scale(0.95, 0.95);
+                background-color: #000000;
+                color: #fff;
+            }
+        }    
+    }    
+}
+
+//ПЯТЫЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block5 {
+    #price {
+        top: -40px;
+    }
+    position: relative;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 120px;
+    .container {
+        flex-direction: column;
+        h3 {
+            font-family: "Noah Medium";
+            font-size: 60px;
+            margin: 0;
+            color: #000000;
+            text-transform: uppercase;
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            user-select: none;
+        }
+    }    
+    &__pricelist {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+        margin-top: 70px;
+        .pricelist__col {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            width: 320px;
+            height: 420px;
+            border: 3px solid #000000;
+            padding-top: 35px;
+            padding-left: 20px;
+            padding-right: 20px;
+            .col__space1 {
+                position: absolute;
+                top: -4px;
+                left: -1px;
+                width: 151px;
+                height: 45px;
+                background-color: #FBFBFB;
+            }
+            .col__space2 {
+                position: absolute;
+                top: -4px;
+                left: 0;
+                width: 243px;
+                height: 45px;
+                background-color: #FBFBFB;
+            }
+            .col__space3 {
+                position: absolute;
+                top: -4px;
+                left: -1px;
+                width: 226px;
+                height: 45px;
+                background-color: #FBFBFB;
+            }
+            .col__h {
+                position: absolute;
+                top: -65px;
+                left: 18px;
+                font-family: "Noah Thin";
+                font-size: 42px;
+                text-transform: uppercase;
+                user-select: none;
+            }
+            .col__price {
+                font-family: "Noah Bold";
+                font-size: 56px;
+                margin: 0;
+                user-select: none;
+                width: 100%;
+                text-align: start;
+            }
+            .col__list {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 280px;
+                height: auto;
+                font-family: "Noah Light";
+                font-size: 16px;
+                user-select: none;
+                margin-top: 12px;
+                color: #5C5C5C;
+                .list__row {
+                    margin: 0;
+                    height: 22px;
+                    img {
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
+                }
+            }   
+            .col__text {
+                position: relative;
+                width: 280px;
+                font-family: "Noah Light";
+                font-size: 16px;
+                user-select: none;
+                color: #5C5C5C;
+                margin: 0;
+                margin-top: 22px;
+                line-height: 22px;
+            }
+            .col__button {
+                position: relative;
+                font-family: "Noah Medium";
+                width: 220px;
+                height: 60px;
+                margin-top: 30px;
+                line-height: 60px;
+                color: #000000;
+                cursor: pointer;
+                user-select: none;
+                text-align: center;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                font-size: 12px;
+                transition: all 0.4s;
+                background-color: #e0e0e0;
+                border-radius: 3px;
+                &:hover {
+                    transform: scale(0.95, 0.95);
+                    background-color: #000000;
+                    color: #fff;
+                }
+            }    
+        }
+    }
+}   
+//ШЕСТОЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block6 {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(94.31deg, #414141 0.17%, #000000 100%);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    .container {
+        flex-direction: column;
+    }
+}
+.block6-slider {
+    width: 100%;
+    height: 235px;
+    &__wrapper {
+        height: 210px !important;
+    }
+    .block6-slider__slide {
+        height: 100%;
+        }
+    }
+    .slide__feedback {
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 860px;
+        height: 100%;
+        .feedback__h {
+            display: block;
+        }
+        .feedback__text {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            margin-top: 25px;
+            font-family: "Noah Light";
+            font-size: 18px;
+            color: #C5C5C5;
+            text-align: center;
+            line-height: 24px;
+        }
+        .feedback__name {
+            position: relative;
+            margin: 0;
+            margin-top: 25px;
+            font-family: "Noah Bold";
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .feedback__account {
+            position: relative;
+            font-family: "Noah Light";
+            font-size: 12px;
+            color: #636363;
+            text-decoration: none;
+            transition: all 0.4s;
+            &:hover {
+                color: #838383;
+            }
+            i {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+.block6-avatars {
+    position: relative !important;
+    width: 320px;
+    height: 100px;
+    &__wrapper {
+        width: 255px !important;
+        margin: 0 auto !important;
+    }
+    &__slide {
+        position: relative;
+        width: 80px !important;
+        height: 80px;
+        overflow: hidden;
+        border-radius: 40px;
+        opacity: 0.65;
+        cursor: pointer;
+        transition: all 0.4s;
+        transform: scale(0.78, 0.78);
+        filter: grayscale(100%);
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+    .swiper-slide.swiper-slide-thumb-active {
+        opacity: 1 !important;
+        transform: scale(1.00, 1.00);
+        filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.55));
+    }
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+.swiper-button-next,.swiper-button-prev {
+    width: 12px;
+    height: 35px;
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: 12px 35px;
+    top: 160px;
+}
+.swiper-button-next {
+    background-image: url("../img/6_block/arrow_r.svg");
+}
+.swiper-button-prev {
+    background-image: url("../img/6_block/arrow_l.svg");
+}
+
+//СЕДМОЙ БЛОК----------------------------------------------------------------------------------------------------------------------------------
+.block7 {
+    position: relative;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 30px;
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #contacts {
+        top: 50px;
+    }
+    &__title {
+        font-family: "Noah Medium";
+        font-size: 60px;
+        margin: 0;
+        color: #000000;
+        text-transform: uppercase;
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        user-select: none;
+        margin-bottom: 50px;
+    }
+}
+.block7-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 600px;
+    .form-sent {
+        position: relative;
+        width: 460px;
+        height: 600px;
+        background-color: #FBFBFB;
+        border: 3px solid #000;
+        &__title {
+            position: absolute;
+            margin: 0;
+            font-family: "Noah Thin";
+            font-size: 38px;
+            top: -22px;
+            left: 0;
+            width: 360px;
+            height: 40px;
+            text-align: center;
+            background-color: #FBFBFB;
+            text-transform: uppercase;
+            z-index: 2;
+            padding: 0;
+        }
+        &__box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: start;
+            width: 360px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+        &__label {
+            font-family: "Noah Light";
+            font-size: 12px;
+            color: #000;
+            text-align: start;
+        }
+        &__input {
+            font-family: "Noah Medium";
+            font-size: 18px;
+            background: none;
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 40px;
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.400);
+            outline: none;
+            color: #000;
+            padding-left: 0;
+        }
+        .checkbox {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            &__label {
+                position: relative;
+                font-family: "Noah Medium";
+                font-size: 14px;
+                text-transform: uppercase;
+                display: inline-block;
+                padding-left: 25px;
+                line-height: 20px;
+                margin-bottom: 13px;
+            }    
+            &__input {
+                position: absolute;  
+                opacity: 0;
+            }
+            &__radio {
+                border: 2px solid #000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 18px;
+                width: 18px;
+                text-align: center;
+                cursor: pointer;
+                i {
+                    font-size: 14px;
+                    display: none;
+                }
+            }
+        }
+        .checkbox input:checked ~ .checkbox__radio i{
+            color: #CC0033;
+            display: block;
+        }
+        &__button {
+            font-family: "Noah Medium";
+            position: relative;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            color: #000000;
+            cursor: pointer;
+            user-select: none;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.4s;
+            border: none;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            &:hover {
+                transform: scale(0.95, 0.95);
+                background-color: #000000;
+                color: #fff;
+            }
+        }
+        &__rule {
+            position: relative;
+            margin: 0 auto;
+            font-family: "Noah Light";
+            font-size: 12px;
+            color: #000000;
+            text-align: center;
+            width: 360px;
+            height: auto;
+            .rule-link {
+                font-family: "Noah Medium";
+                color: #292929;
+                transition: all 0.4s;
+                text-decoration: underline;
+                &:hover {
+                    color: #000000;
+                }
+            }
+        }    
+    }
+    .social-blog {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 360px;
+        &__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            height: 80px;
+            margin-bottom: 60px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        &__title {
+            font-family: "Noah Bold";
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            margin-bottom: 16px;
+        }
+        &__line {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            border-bottom: 1px solid #000;
+            opacity: 0.2;
+            margin-bottom: 16px;
+        }
+        &__buttons {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        &__button {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 20px;
+            color: #828282;
+            text-align: start;
+            transition: all 0.4s;
+            &:hover {
+                color: #000;
+                transform: scale(1.05, 1.05);
+            }
+        }
+        &__inner {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        &__icon {
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            color: #828282;
+            font-size: 20px;
+        }
+        &__text {
+            font-family: "Noah Regular";
+            font-size: 18px;
+            margin: 0;
+        }
+        &__text--link {
+            color: #000;
+        }
+    }    
+}
+
+
+//ПОДВАЛ----------------------------------------------------------------------------------------------------------------------------------
+.footer {
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    &__rules {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 50px;
+        font-family: "Noah Light";
+        font-size: 12px;
+        color: #636363;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        padding-top: 10px;
+    }
+    &__copyright {
+        position: relative;
+        text-align: start;
+        margin: 0;
+        padding-right: 10px;
+        .footer__copyright-link {
+            font-family: "Noah Medium";
+            display: inline-block;
+            margin-left: 3px;
+            color: #292929;
+            transition: all 0.4s;
+            text-decoration: underline;
+            &:hover {
+                color: #000;
+            }
+        }
+    }    
+    &__author {
+        position: relative;
+        text-align: start;
+        margin: 0;
+        .footer__author-link {
+            font-family: "Noah Medium";
+            display: inline-block;
+            margin-left: 3px;
+            color: #292929;
+            transition: all 0.4s;
+            text-decoration: underline;
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}
+
+//Адаптация под размеры эрана------------------------------------------------------------------------------------------------------------------------------------------
+@import "media.scss";

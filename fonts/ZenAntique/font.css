@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'ZenAntique-Regular';
+  src: url('ZenAntique-Regular.eot');
+  src: url('ZenAntique-Regular.eot?#iefix') format('embedded-opentype'),
+       url('ZenAntique-Regular.svg#ZenAntique-Regular') format('svg'),
+       url('ZenAntique-Regular.ttf') format('truetype'),
+       url('ZenAntique-Regular.woff') format('woff'),
+       url('ZenAntique-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
